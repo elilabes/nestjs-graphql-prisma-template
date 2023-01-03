@@ -3,6 +3,8 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { GraphQLModule } from "@nestjs/graphql";
 import { GqlModule } from "./graphql/gql.module";
+import { RestModule } from "./rest/rest.module";
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -17,6 +19,7 @@ import { GqlModule } from "./graphql/gql.module";
       context: ({ req, res }) => ({ req, res }),
     }),
     GqlModule,
+    RestModule,
   ],
 })
 export class AppModule {}

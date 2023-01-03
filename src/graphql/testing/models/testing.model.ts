@@ -1,8 +1,9 @@
-import { Field, ObjectType } from "@nestjs/graphql";
+import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { Author } from "./author.model";
 
 @ObjectType()
 export class Post {
-  @Field(() => String)
+  @Field(() => Int)
   id: number;
 
   @Field(() => String)
@@ -14,6 +15,6 @@ export class Post {
   @Field(() => String, { nullable: true })
   content: string | null;
 
-  @Field(() => String, { nullable: true })
-  authorId: number | null;
+  @Field(() => Author, { nullable: true })
+  author: Author | null;
 }

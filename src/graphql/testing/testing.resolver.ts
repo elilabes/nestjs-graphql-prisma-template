@@ -6,8 +6,11 @@ import { Post } from "./models/testing.model";
 export class TestingResolver {
   @Query(() => [Post], { nullable: true })
   public async posts(): Promise<Post[]> {
-    const posts = await prisma.post.findMany();
-    console.log(posts);
+    const posts = await prisma.post.findMany({
+      include: {
+        author: true,
+      },
+    });
     return posts;
   }
 }
